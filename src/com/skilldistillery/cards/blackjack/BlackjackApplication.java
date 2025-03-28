@@ -30,7 +30,7 @@ public class BlackjackApplication {
 			Card playerCard = dealer.dealCard();
 			player.hit(playerCard);
 			System.out.println("Your " + playerCard);
-			System.out.println("Your hand total is " + player.gethandValue());
+			System.out.println("Your hand total is " + player.getHandValue());
 		}
 		Card dealerCard1 = dealer.dealCard();
 		Card dealerCard2 = dealer.dealCard();
@@ -41,19 +41,23 @@ public class BlackjackApplication {
 		System.out.println("[Hidden]");
 		
 		String reply = "";
-		
-		while(!reply.equalsIgnoreCase("Stay") && player.gethandValue() < 21) {
+		if(player.getHandValue() == 21) {
+			System.out.println("You got a blackjack!");
+		}
+		while(!reply.equalsIgnoreCase("Stay") && player.getHandValue() < 21) {
 			System.out.println("Would you like to Hit or stay?");
 			reply = sc.next();
 			if(reply.equalsIgnoreCase("Hit")) {
 				Card newCard = dealer.dealCard();
 				player.hit(newCard);
 				System.out.println("You drew " + newCard);
-				System.out.println("Your hand total is " + player.gethandValue());
+				System.out.println("Your hand total is " + player.getHandValue());
 			} else if (!reply.equalsIgnoreCase("Stay")) {
 		System.out.println("Hit or Stay?");
-			}
+			} 
 		}
+		System.out.println("Dealer's Turn");
+		dealer.playTurn();
 
 	}
 

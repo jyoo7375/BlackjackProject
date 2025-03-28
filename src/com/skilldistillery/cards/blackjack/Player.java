@@ -16,7 +16,7 @@ public class Player {
 		this.hand.addCard(card);
 	}
 	
-	public int gethandValue() {
+	public int getHandValue() {
 		return hand.getHandValue();
 	}
 
