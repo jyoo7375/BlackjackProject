@@ -21,17 +21,32 @@ public class BlackjackApplication {
 
 	public static void main(String[] args) {
 		new BlackjackApplication().launch();
+
 	}
 
 	public void launch() {
 		System.out.println("Welcome to Blackjack");
+		dealInitialPlayerCards();
+		dealInitialDealerCards();
+		playerTurn();
+
+		System.out.println("Dealer's Turn");
+		dealer.playTurn();
+		determineWinner();
+
+	}
+
+	private void dealInitialPlayerCards() {
 		int numCards = 2;
 		for (int i = 0; i < numCards; i++) {
 			Card playerCard = dealer.dealCard();
 			player.hit(playerCard);
 			System.out.println("Your " + playerCard);
-			System.out.println("Your hand total is " + player.getHandValue());
 		}
+		System.out.println("Your hand total is " + player.getHandValue());
+	}
+
+	private void dealInitialDealerCards() {
 		Card dealerCard1 = dealer.dealCard();
 		Card dealerCard2 = dealer.dealCard();
 		dealer.hit(dealerCard1);
@@ -39,25 +54,43 @@ public class BlackjackApplication {
 		System.out.println("Dealers cards:");
 		System.out.println(dealerCard1);
 		System.out.println("[Hidden]");
-		
+		System.out.println("Dealers score is " + dealerCard1.getValue() + " with one card showing");
+	}
+
+	private void playerTurn() {
 		String reply = "";
-		if(player.getHandValue() == 21) {
+		if (player.isBlackjack()) {
 			System.out.println("You got a blackjack!");
 		}
-		while(!reply.equalsIgnoreCase("Stay") && player.getHandValue() < 21) {
+		while (!reply.equalsIgnoreCase("Stay") && player.getHandValue() < 21) {
 			System.out.println("Would you like to Hit or stay?");
 			reply = sc.next();
-			if(reply.equalsIgnoreCase("Hit")) {
+			if (reply.equalsIgnoreCase("Hit")) {
 				Card newCard = dealer.dealCard();
 				player.hit(newCard);
 				System.out.println("You drew " + newCard);
 				System.out.println("Your hand total is " + player.getHandValue());
 			} else if (!reply.equalsIgnoreCase("Stay")) {
-		System.out.println("Hit or Stay?");
-			} 
+				System.out.println("Hit or Stay?");
+			}
 		}
-		System.out.println("Dealer's Turn");
-		dealer.playTurn();
+	}
+
+	private void determineWinner() {
+		int playerTotal = player.getHandValue();
+		int dealerTotal = dealer.getHandValue();
+
+		if (playerTotal > 21) {
+			System.out.println("Busted Dealer wins.");
+		} else if (dealerTotal > 21) {
+			System.out.println("Dealer busted. You Win!");
+		} else if (playerTotal > dealerTotal) {
+			System.out.println("You win!");
+		} else if (playerTotal < dealerTotal) {
+			System.out.println("Dealer wins!");
+		} else {
+			System.out.println("Its a tie!");
+		}
 
 	}
 

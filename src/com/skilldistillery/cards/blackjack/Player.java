@@ -19,5 +19,9 @@ public class Player {
 	public int getHandValue() {
 		return hand.getHandValue();
 	}
+	
+	public boolean isBlackjack() {
+		return hand.isBlackjack();
+	}
 
 }
