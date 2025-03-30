@@ -80,9 +80,9 @@ public class BlackjackApplication {
 		int playerTotal = player.getHandValue();
 		int dealerTotal = dealer.getHandValue();
 
-		if (playerTotal > 21) {
+		if (player.isBust()) {
 			System.out.println("Busted Dealer wins.");
-		} else if (dealerTotal > 21) {
+		} else if (dealer.isBust()) {
 			System.out.println("Dealer busted. You Win!");
 		} else if (playerTotal > dealerTotal) {
 			System.out.println("You win!");
