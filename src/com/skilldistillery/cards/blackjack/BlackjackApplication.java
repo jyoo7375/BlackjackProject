@@ -26,6 +26,24 @@ public class BlackjackApplication {
 
 	public void launch() {
 		System.out.println("Welcome to Blackjack");
+		boolean playAgain = true;
+		
+		while(playAgain) {
+			playRound();
+			
+			System.out.println("Would you like to play another round?");
+			String reply = sc.next();
+			if(reply.equalsIgnoreCase("yes")) {
+				resetHands();
+			} else {
+				playAgain = false;
+				System.out.println("Thank you for playing!");
+			}
+		}
+
+	}
+	
+	private void playRound() {
 		dealInitialPlayerCards();
 		dealInitialDealerCards();
 		playerTurn();
@@ -33,7 +51,7 @@ public class BlackjackApplication {
 		System.out.println("Dealer's Turn");
 		dealer.playTurn();
 		determineWinner();
-
+		
 	}
 
 	private void dealInitialPlayerCards() {
@@ -92,6 +110,11 @@ public class BlackjackApplication {
 			System.out.println("Its a tie!");
 		}
 
+	}
+	
+	private void resetHands() {
+		player.hand.clear();
+		dealer.hand.clear();
 	}
 
 }
