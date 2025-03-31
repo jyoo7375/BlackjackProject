@@ -6,9 +6,6 @@ import com.skilldistillery.cards.common.Card;
 
 public class BlackjackApplication {
 
-	// no more fields
-	// no deck type variables at all
-
 	private Scanner sc;
 	private Dealer dealer;
 	private Player player;
@@ -31,7 +28,7 @@ public class BlackjackApplication {
 		while(playAgain) {
 			playRound();
 			
-			System.out.println("Would you like to play another round?");
+			System.out.println("Would you like to play another round? yes or no?");
 			String reply = sc.next();
 			if(reply.equalsIgnoreCase("yes")) {
 				resetHands();
@@ -40,7 +37,8 @@ public class BlackjackApplication {
 				System.out.println("Thank you for playing!");
 			}
 		}
-
+		
+		sc.close();
 	}
 	
 	private void playRound() {

@@ -5,8 +5,6 @@ import java.util.List;
 
 public abstract class Hand {
 	
-	//No GETTER for cardsInHand
-	
 	
 
 	protected List<Card> cardsInHand;

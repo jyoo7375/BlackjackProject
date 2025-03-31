@@ -4,9 +4,7 @@ import com.skilldistillery.cards.common.Card;
 import com.skilldistillery.cards.common.Deck;
 
 public class Dealer extends Player{
-	
-	//no more fields
-	// no getter for the deck
+
 	private Deck deck;
 	
 	public Dealer() {

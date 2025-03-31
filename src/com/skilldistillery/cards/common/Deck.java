@@ -6,7 +6,6 @@ import java.util.List;
 
 public class Deck {
 	
-	//DO NOT GENERATE A GETTER FOR CARDS
 	
 	private List<Card> cards;
 	
