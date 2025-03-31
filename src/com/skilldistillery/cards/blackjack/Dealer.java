@@ -18,6 +18,11 @@ public class Dealer extends Player{
 		
 	}
 	
+	public void resetDeck() {
+		deck = new Deck();
+		deck.shuffle();
+	}
+	
 	public void playTurn() {
 		while(getHandValue() < 17) {
 			Card card = dealCard();

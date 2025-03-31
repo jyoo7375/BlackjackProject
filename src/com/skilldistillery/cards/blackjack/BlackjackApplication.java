@@ -113,6 +113,7 @@ public class BlackjackApplication {
 	private void resetHands() {
 		player.hand.clear();
 		dealer.hand.clear();
+		dealer.resetDeck();
 	}
 
 }
